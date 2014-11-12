@@ -1,7 +1,7 @@
 <?php
 
 function ironfolio_menu() {
-    $items['admin/ironfolio'] = array(
+    $items['admin/ironfolio/%'] = array(
         'title'=>'Iron Folio',
         'description'=>'Edit Homepage.',
         'page callback' => 'admin_ironfolio',
@@ -15,7 +15,7 @@ function ironfolio_menu() {
 function ironfolio_theme() {
     return array(
         'ironfolio_admin_list' => array(
-            'variables' => array('categories' => NULL, 'iron_folio_items' => array()),
+            'variables' => array('categories' => NULL, 'current_cat_id' => NULL, 'iron_folio_items' => array()),
             'template' => 'ironfolio-admin-list',
         )
     );

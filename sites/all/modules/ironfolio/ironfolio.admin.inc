@@ -8,9 +8,18 @@
  */
 
 function admin_ironfolio() {
+
+    $current_cat = taxonomy_term_load(arg(2));
+    $current_cat_id = $current_cat ? $current_cat->tid : null;
+
+
     // get categories
     $vid = taxonomy_vocabulary_machine_name_load('folio_types ')->vid;
     $tax_tree = taxonomy_get_tree($vid);
+    if (!$current_cat_id) {
+        $current_cat_id = $tax_tree[0]->tid;
+    }
+
     $categories = array();
     foreach ($tax_tree as $t_item) {
         $term = taxonomy_term_load($t_item->tid);
@@ -23,7 +32,7 @@ function admin_ironfolio() {
     global $language;
     $lang = $language->language;
     $nodes = node_load_multiple(array(), array('type' => 'iron_folio', 'language' => $lang));
-    $current_cat_id = 2;
+
     $iron_folio_items = array();
     foreach ($nodes as $node) {
         if ($node->field_category['und'][0]['tid'] == $current_cat_id) {
@@ -32,5 +41,8 @@ function admin_ironfolio() {
     }
 
 
-    return theme('ironfolio_admin_list', array('categories' => $categories, 'iron_folio_items' => $iron_folio_items));
+    return theme('ironfolio_admin_list', array('categories' => $categories,
+        'current_cat_id' => $current_cat_id,
+        'iron_folio_items' => $iron_folio_items)
+    );
 }

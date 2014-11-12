@@ -1,7 +1,18 @@
+<?php
+global $base_path, $language_url;
+$current_url_path = $base_path;  $language_url->prefix;
+$current_url_path .=  $language_url->prefix ?  $language_url->prefix . '/' : '';
+?>
 <h1>Cats</h1>
 <ul>
 <?php foreach ($categories as $cat): ?>
-    <li><?php echo $cat->name; ?></li>
+    <?php
+        $cat_class = "";
+           if ($current_cat_id == $cat->tid) {
+               $cat_class = 'active';
+           }
+    ?>
+    <li class="<?php echo $cat_class; ?>"><a href="<?php echo $current_url_path . "admin/ironfolio/$cat->tid"; ?>"><?php echo $cat->name; ?></a></li>
 <?php endforeach; ?>
 </ul>
 
