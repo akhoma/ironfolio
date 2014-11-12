@@ -1,0 +1,23 @@
+<?php
+
+function ironfolio_menu() {
+    $items['admin/ironfolio'] = array(
+        'title'=>'Iron Folio',
+        'description'=>'Edit Homepage.',
+        'page callback' => 'admin_ironfolio',
+        'access callback' => TRUE,
+        'file' => 'ironfolio.admin.inc',
+        'type' => MENU_NORMAL_ITEM
+    );
+    return $items;
+}
+
+function ironfolio_theme() {
+    return array(
+        'ironfolio_admin_list' => array(
+            'variables' => array('categories' => NULL, 'iron_folio_items' => array()),
+            'template' => 'ironfolio-admin-list',
+        )
+    );
+}
+
