@@ -5,13 +5,81 @@
 .ironfolio-admin ul.folioitems  li{
     display: block;
     float: left;
-    margin: 5px;
+    margin: 15px;
     width: 200px;
-    border: 1px solid #000000;
+    border: 1px solid #ccc;
 }
 
 .ironfolio-admin ul.folioitems img {
-    width: 100%;
+    width: 80%;
     height: auto;
-;
+}
+
+.ironfolio-admin .field-name-field-preview-image {
+    height: 145px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.ironfolio-admin .field-name-field-preview-image .field-label {
+    display: none;
+}
+
+.ironfolio-admin  .folio-item-navigation {
+    width: 157px;
+    margin: 5px auto;
+    overflow: hidden;
+}
+
+.ironfolio-admin  .folio-item-navigation a {
+    display: block;
+    float: left;
+    height: 33px;
+    width: 39px;
+}
+
+.ironfolio-admin .folio-edit {
+    background: url("images/buttons-sprite.jpg") no-repeat scroll -105px -5px transparent;
+}
+
+.ironfolio-admin .folio-delete {
+     background: url("images/buttons-sprite.jpg") no-repeat scroll -154px -5px transparent;
+ }
+
+.ironfolio-admin .folio-up {
+    background: url("images/buttons-sprite.jpg") no-repeat scroll -5px -5px transparent;
+}
+
+.ironfolio-admin .folio-down {
+    background: url("images/buttons-sprite.jpg") no-repeat scroll -54px -5px transparent;
+}
+
+.ironfolio-admin .languages {
+    list-style-type: none;
+}
+.ironfolio-admin .languages li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.ironfolio-admin .languages li a.active{
+    background: #333;
+    border-radius: 5px;
+    padding: 0 6px 0 6px;
+    color: #ffffff;
+}
+
+.ironfolio-admin .categories {
+    list-style-type: none;
+}
+.ironfolio-admin .categories li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.ironfolio-admin .categories li a.active{
+    background: #333;
+    border-radius: 5px;
+    padding: 0 6px 0 6px;
+    color: #ffffff;
 }
