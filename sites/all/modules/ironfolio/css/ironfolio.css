@@ -1,0 +1,13 @@
+.ironfolio-admin ul.folioitems {
+
+}
+
+.ironfolio-admin ul.folioitems  li{
+    display: block;
+    float: left;
+    margin: 5px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #000000;
+
+}

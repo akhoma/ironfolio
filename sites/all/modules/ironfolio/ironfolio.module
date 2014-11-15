@@ -21,10 +21,15 @@ function ironfolio_theme() {
     );
 }
 
+function ironfolio_preprocess_html(&$variables) {
+    drupal_add_css(drupal_get_path('module', 'ironfolio') . '/css/ironfolio.css',
+        array('group' => CSS_DEFAULT, 'every_page' => TRUE));
+}
+
 function ironfolio_node_insert($node) {
     if ($node->type == 'iron_folio') {
         $nodeUpdated = node_load($node->nid);
         $nodeUpdated->field_sort_order['und'][0]['value'] = $node->nid;
         node_save($nodeUpdated);
-    }    
+    }
 }
