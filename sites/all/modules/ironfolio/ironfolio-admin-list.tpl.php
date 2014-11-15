@@ -48,6 +48,10 @@ $current_url_path .=  $language_url->prefix ?  $language_url->prefix . '/' : '';
             <?php if ($next_item): ?>
                 <a href="<?php echo $current_url_path . "admin/ironfolio/changesortorder/$item->nid/$next_item->nid/"; ?>">Down</a>
             <?php endif ?>
+            <br />
+            <a href="<?php echo $current_url_path . "node/$item->nid/edit/?destination=admin/ironfolio/$current_cat_id/"; ?>">Edit</a>
+            <br />
+            <a href="<?php echo $current_url_path . "node/$item->nid/delete/?destination=admin/ironfolio/$current_cat_id/"; ?>">Delete</a>
         </li>
     <?php endfor; ?>
     </ul>
