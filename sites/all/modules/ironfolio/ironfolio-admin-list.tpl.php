@@ -30,8 +30,25 @@ $current_url_path .=  $language_url->prefix ?  $language_url->prefix . '/' : '';
     <br />
     <h1>Items</h1>
     <ul class="folioitems">
-    <?php foreach ($iron_folio_items as $item): ?>
-        <li><?php echo $item->title; ?></li>
-    <?php endforeach; ?>
+    <?php for($i = 0; $i < count($iron_folio_items); $i++): ?>
+        <?php
+            $item = $iron_folio_items[$i];
+            $prev_item = isset($iron_folio_items[$i-1]) ? $iron_folio_items[$i-1] : false;
+            $next_item = isset($iron_folio_items[$i+1]) ? $iron_folio_items[$i+1] : false;
+        ?>
+        <li>
+            <?php echo $item->title; ?>
+            <br />
+            <?php echo $item->field_sort_order['und'][0]['value']; ?>
+            <br />
+            <?php if ($prev_item): ?>
+                <a href="<?php echo $current_url_path . "admin/ironfolio/changesortorder/$item->nid/$prev_item->nid/"; ?>">Up</a>
+            <?php endif ?>
+            <br />
+            <?php if ($next_item): ?>
+                <a href="<?php echo $current_url_path . "admin/ironfolio/changesortorder/$item->nid/$next_item->nid/"; ?>">Down</a>
+            <?php endif ?>
+        </li>
+    <?php endfor; ?>
     </ul>
 </div>
