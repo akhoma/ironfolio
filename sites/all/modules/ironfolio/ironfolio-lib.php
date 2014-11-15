@@ -41,4 +41,18 @@ class IronFolioModel {
         return $categories;
     }
 
+    public function changeSortOrder($nid1, $nid2) {
+        $node1 = node_load($nid1);
+        $node2 = node_load($nid2);
+        if ($node1 && $node2) {
+            $sort_order = $node1->field_sort_order['und'][0]['value'];
+            $node1->field_sort_order['und'][0]['value'] = $node2->field_sort_order['und'][0]['value'];
+            $node2->field_sort_order['und'][0]['value'] = $sort_order;
+            node_save($node1);
+            node_save($node2);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

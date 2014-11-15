@@ -38,14 +38,9 @@ function admin_ironfolio() {
 function admin_ironfolio_changesortorder() {
     $nid1 = arg(3);
     $nid2 = arg(4);
-    $node1 = node_load($nid1);
-    $node2 = node_load($nid2);
-    if ($node1 && $node2) {
-        $sort_order = $node1->field_sort_order['und'][0]['value'];
-        $node1->field_sort_order['und'][0]['value'] = $node2->field_sort_order['und'][0]['value'];
-        $node2->field_sort_order['und'][0]['value'] = $sort_order;
-        node_save($node1);
-        node_save($node2);
+    $ironFolioModel = new IronFolioModel;
+    $changed = $ironFolioModel->changeSortOrder($nid1, $nid2);
+    if ($changed) {
         drupal_set_message(t('Saved'), $type = 'status');
         drupal_goto($_SERVER['HTTP_REFERER']);
     } else {
