@@ -8,6 +8,7 @@
  */
 
 require_once 'ironfolio-lib.php';
+require_once 'ironfolio-helper.php';
 
 function admin_ironfolio() {
 
@@ -29,9 +30,11 @@ function admin_ironfolio() {
     // get folio items by lang and cat
     $iron_folio_items = $ironFolioModel->getFolioItemsByCatAndLang($current_cat_id, $lang);
 
+    $helper = new IronFolioHelper;
     return theme('ironfolio_admin_list', array('categories' => $categories,
-        'current_cat_id' => $current_cat_id,
-        'iron_folio_items' => $iron_folio_items)
+        'current_cat_id'   => $current_cat_id,
+        'iron_folio_items' => $iron_folio_items,
+        'helper'           => $helper)
     );
 }
 

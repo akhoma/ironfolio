@@ -25,7 +25,9 @@ function ironfolio_menu() {
 function ironfolio_theme() {
     return array(
         'ironfolio_admin_list' => array(
-            'variables' => array('categories' => NULL, 'current_cat_id' => NULL, 'iron_folio_items' => array()),
+            'variables' => array('categories' => NULL, 'current_cat_id' => NULL,
+                'iron_folio_items' => array(),
+                'helper' => NULL),
             'template' => 'ironfolio-admin-list',
         )
     );

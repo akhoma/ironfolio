@@ -37,6 +37,9 @@ $current_url_path .=  $language_url->prefix ?  $language_url->prefix . '/' : '';
             $next_item = isset($iron_folio_items[$i+1]) ? $iron_folio_items[$i+1] : false;
         ?>
         <li>
+            <?php
+                echo $helper->renderFolioNodeFieldImage($item);
+            ?>
             <?php echo $item->title; ?>
             <br />
             <?php echo $item->field_sort_order['und'][0]['value']; ?>
