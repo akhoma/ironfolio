@@ -21,3 +21,10 @@ function ironfolio_theme() {
     );
 }
 
+function ironfolio_node_insert($node) {
+    if ($node->type == 'iron_folio') {
+        $nodeUpdated = node_load($node->nid);
+        $nodeUpdated->field_sort_order['und'][0]['value'] = $node->nid;
+        node_save($nodeUpdated);
+    }    
+}
