@@ -11,6 +11,10 @@ require_once 'ironfolio-lib.php';
 require_once 'ironfolio-helper.php';
 
 function admin_ironfolio() {
+    drupal_add_js('
+jQuery(document).ready(function () {
+	IronFolio.editForm.init();
+  });', 'inline');
     return drupal_get_form('form_ironfolio_edit_form');
 }
 
@@ -48,17 +52,17 @@ function form_ironfolio_edit_form($form, &$form_state) {
     $iron_folio_items = $ironFolioModel->getFolioItemsByCatAndLang($current_cat_id, $lang);
 
     $helper = new IronFolioHelper;
-    $form['node_sort_order'] = array(
+    $form['nodes_sort_order'] = array(
         '#type' => 'hidden',
-        '#value' => '',
+        '#attributes' => array(
+            'id' => 'node_sort_order',
+        ),
     );
-    $form['node_to_delete'] = array(
+    $form['nodes_to_delete'] = array(
         '#type' => 'hidden',
-        '#value' => '',
-    );
-    $form['submit_button'] = array(
-        '#type' => 'submit',
-        '#value' => t('Сохранить данные'),
+        '#attributes' => array(
+            'id' => 'nodes_to_delete',
+        ),
     );
 
     $form['some_text'] = array(

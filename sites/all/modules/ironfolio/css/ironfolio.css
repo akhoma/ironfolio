@@ -38,6 +38,10 @@
     width: 39px;
 }
 
+.ironfolio-admin .folio-item:first-child .folio-up, .ironfolio-admin .folio-item:last-child .folio-down{
+    display: none;
+}
+
 .ironfolio-admin .folio-edit {
     background: url("images/buttons-sprite.jpg") no-repeat scroll -105px -5px transparent;
 }

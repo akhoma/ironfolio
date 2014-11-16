@@ -38,29 +38,22 @@ $languages = language_list('enabled');
     <fieldset id="edit-filters" class="form-wrapper">
         <legend><span class="fieldset-legend">Портфолио</span></legend>
         <a class="button" href="<?php echo $current_url_path . "node/add/iron-folio/?destination=admin/ironfolio/$current_cat_id/"; ?>">Добавить работу</a>
+        <a id="folio-save" class="button">Сохранить изменения</a>
         <ul class="folioitems">
         <?php for($i = 0; $i < count($iron_folio_items); $i++): ?>
             <?php
                 $item = $iron_folio_items[$i];
-                $prev_item = isset($iron_folio_items[$i-1]) ? $iron_folio_items[$i-1] : false;
-                $next_item = isset($iron_folio_items[$i+1]) ? $iron_folio_items[$i+1] : false;
             ?>
-            <li>
+            <li class="folio-item" folio-item-id="<?php echo $item->nid ?>">
                 <?php
                     echo $helper->renderFolioNodeFieldImage($item);
                 ?>
                 <?php // echo $item->field_sort_order['und'][0]['value']; ?>
                 <div class="folio-item-navigation">
-                    <?php if ($prev_item): ?>
-                        <a class="folio-up" href="<?php echo $current_url_path . "admin/ironfolio/changesortorder/$item->nid/$prev_item->nid/"; ?>"></a>
-                    <?php endif ?>
-
-                    <?php if ($next_item): ?>
-                        <a class="folio-down" href="<?php echo $current_url_path . "admin/ironfolio/changesortorder/$item->nid/$next_item->nid/"; ?>"></a>
-                    <?php endif ?>
-
+                    <a class="folio-up"></a>
+                    <a class="folio-down"></a>
                     <a class="folio-edit" href="<?php echo $current_url_path . "node/$item->nid/edit/?destination=admin/ironfolio/$current_cat_id/"; ?>"></a>
-                    <a class="folio-delete" href="<?php echo $current_url_path . "node/$item->nid/delete/?destination=admin/ironfolio/$current_cat_id/"; ?>"></a>
+                    <a class="folio-delete"></a>
                 </div>
             </li>
         <?php endfor; ?>
