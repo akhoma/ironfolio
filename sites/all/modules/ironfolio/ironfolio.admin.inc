@@ -65,6 +65,11 @@ function form_ironfolio_edit_form($form, &$form_state) {
         ),
     );
 
+    $form['submit_button'] = array(
+        '#type' => 'submit',
+        '#value' => t('Сохранить данные'),
+    );
+
     $form['some_text'] = array(
         '#markup' =>     theme('ironfolio_admin_list', array('categories' => $categories,
                 'current_cat_id'   => $current_cat_id,
@@ -77,7 +82,17 @@ function form_ironfolio_edit_form($form, &$form_state) {
 }
 
 function form_ironfolio_edit_form_validate($form, &$form_state) {
+    $a = 1;
 }
 
 function form_ironfolio_edit_form_submit($form, &$form_state) {
+    $nodesToSortIds = explode(',', $form['nodes_sort_order']['#value']);
+    $ironFolioModel = new IronFolioModel;
+    $ironFolioModel->changeSortOrder($nodesToSortIds);
+
+    $nodesToDeleteIds = explode(',', $form['nodes_to_delete']['#value']);
+    $ironFolioModel->deleteFolioItems($nodesToDeleteIds);
+
+    drupal_set_message(t('Данные сохранины'), $type = 'status');
+
 }
