@@ -5,7 +5,7 @@ function ironfolio_menu() {
         'title'=>'Iron Folio',
         'description'=>'Edit Homepage.',
         'page callback' => 'admin_ironfolio',
-        'access callback' => TRUE,
+        'access arguments' => array('administer users'),
         'file' => 'ironfolio.admin.inc',
         'type' => MENU_NORMAL_ITEM
     );
