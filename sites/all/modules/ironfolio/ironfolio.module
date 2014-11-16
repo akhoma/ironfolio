@@ -10,15 +10,6 @@ function ironfolio_menu() {
         'type' => MENU_NORMAL_ITEM
     );
 
-    $items['admin/ironfolio/changesortorder/%/%'] = array(
-        'title'=>'Iron Folio',
-        'description'=>'Edit Homepage.',
-        'page callback' => 'admin_ironfolio_changesortorder',
-        'access callback' => TRUE,
-        'file' => 'ironfolio.admin.inc',
-        'type' => MENU_NORMAL_ITEM
-    );
-
     return $items;
 }
 

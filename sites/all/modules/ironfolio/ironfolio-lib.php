@@ -1,9 +1,20 @@
 <?php
+/**
+ * Iron folio model
+ * @package 2kish
+ * @subpackage 2kish_iron_folio
+ */
 class IronFolioModel {
 
     private $_folioNodeType = 'iron_folio',
             $_folioTaxonomyName = 'folio_types';
 
+    /**
+     * Return  folio items by categoryId and language
+     * @param int $catId
+     * @param string $lang
+     * @return array
+     */
     public function getFolioItemsByCatAndLang($catId, $lang) {
         $query = new EntityFieldQuery();
         $query->entityCondition('entity_type', 'node')
@@ -27,6 +38,11 @@ class IronFolioModel {
         return $iron_folio_items;
     }
 
+    /**
+     * Return  folio categories by language
+     * @param string $lang
+     * @return array
+     */
     public function getFolioCategories($lang) {
         $vid = taxonomy_vocabulary_machine_name_load($this->_folioTaxonomyName)->vid;
         $tax_tree = taxonomy_get_tree($vid);
@@ -41,6 +57,10 @@ class IronFolioModel {
         return $categories;
     }
 
+    /**
+     * Sort folio items in provided order
+     * @param array $nodeIds
+     */
     public function changeSortOrder($nodeIds) {
         $count = count($nodeIds);
         for ($i = 0; $i < $count; $i++) {
@@ -53,6 +73,10 @@ class IronFolioModel {
         }
     }
 
+    /**
+     * Delete folio items
+     * @param array $nodeIds
+     */
     public function deleteFolioItems($nodeIds) {
         $count = count($nodeIds);
         for ($i = 0; $i < $count; $i++) {
