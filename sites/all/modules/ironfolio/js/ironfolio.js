@@ -16,15 +16,18 @@
             function initDeleteButton() {
                 $('.folio-delete').each(function(index, value) {
                     $(this).click(function(){
-                        var folioElement = $(this).parents('.folio-item');
-                        var elementsToDelete = $cache.editForm.nodesToDeleteEl.val();
-                        if (elementsToDelete) {
-                            elementsToDelete = elementsToDelete + ',' + folioElement.attr('folio-item-id');
-                        } else {
-                            elementsToDelete = folioElement.attr('folio-item-id');
+                        var isConfirmed = confirm("Удалить работу?");
+                        if (isConfirmed) {
+                            var folioElement = $(this).parents('.folio-item');
+                            var elementsToDelete = $cache.editForm.nodesToDeleteEl.val();
+                            if (elementsToDelete) {
+                                elementsToDelete = elementsToDelete + ',' + folioElement.attr('folio-item-id');
+                            } else {
+                                elementsToDelete = folioElement.attr('folio-item-id');
+                            }
+                            $cache.editForm.nodesToDeleteEl.val(elementsToDelete);
+                            folioElement.hide('slow', function(){ this.remove(); });
                         }
-                        $cache.editForm.nodesToDeleteEl.val(elementsToDelete);
-                        folioElement.hide('slow', function(){ this.remove(); });
                     });
                 });
             };
