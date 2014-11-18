@@ -1,12 +1,23 @@
 <?php
 
 function ironfolio_menu() {
+
+    // admin edit folio list
     $items['admin/ironfolio/%'] = array(
         'title'=>'Iron Folio',
-        'description'=>'Edit Homepage.',
+        'description'=>'Edit Iron Folio',
         'page callback' => 'admin_ironfolio',
         'access arguments' => array('administer users'),
         'file' => 'ironfolio.admin.inc',
+        'type' => MENU_NORMAL_ITEM
+    );
+    // frontend folio
+    $items['ironfolio/%'] = array(
+        'title'=>'Iron Folio Frontend',
+        'description'=>'Frontend Iron Folio',
+        'page callback' => 'frontend_ironfolio',
+        'access callback' => TRUE,
+        'file' => 'ironfolio.frontend.inc',
         'type' => MENU_NORMAL_ITEM
     );
 
@@ -20,6 +31,13 @@ function ironfolio_theme() {
                 'iron_folio_items' => array(),
                 'helper' => NULL),
             'template' => 'ironfolio-admin-list',
+        ),
+        'ironfolio_frontend_list' => array(
+            'variables' => array('categories' => NULL, 'current_cat_id' => NULL,
+                'iron_folio_items' => array(),
+                'helper' => NULL,
+                'pager'  => NULL),
+            'template' => 'ironfolio-frontend-list',
         )
     );
 }

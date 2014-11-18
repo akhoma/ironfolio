@@ -80,5 +80,4 @@ function form_ironfolio_edit_form_submit($form, &$form_state) {
     $ironFolioModel->deleteFolioItems($nodesToDeleteIds);
 
     drupal_set_message(t('Данные сохранины'), $type = 'status');
-
 }

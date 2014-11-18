@@ -13,9 +13,11 @@ class IronFolioModel {
      * Return  folio items by categoryId and language
      * @param int $catId
      * @param string $lang
+     * @param int $offset
+     * @param int $limit
      * @return array
      */
-    public function getFolioItemsByCatAndLang($catId, $lang) {
+    public function getFolioItemsByCatAndLang($catId, $lang, $offset = NULL, $limit = NULL) {
         $query = new EntityFieldQuery();
         $query->entityCondition('entity_type', 'node')
             ->propertyCondition('status', 1)
@@ -33,6 +35,10 @@ class IronFolioModel {
             if ($node->field_category['und'][0]['tid'] == $catId) {
                 $iron_folio_items[] = $node;
             }
+        }
+
+        if (null !== $offset && null !== $limit) {
+            $iron_folio_items = array_slice($iron_folio_items, $offset, $limit);
         }
 
         return $iron_folio_items;
