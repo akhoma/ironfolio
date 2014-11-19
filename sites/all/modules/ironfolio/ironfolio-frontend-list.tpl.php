@@ -3,11 +3,11 @@ global $base_path, $language_url, $base_url;
 $current_url_path = $base_path;
 $current_url_path .=  $language_url->prefix ?  $language_url->prefix . '/' : '';
 ?>
-<div class="ironfolio-frontend">
+<div id="ironfolio-frontend">
 
-    <div id="edit-filters" class="admin-panel">
+    <div id="folio-categories-container">
         <h3>Категории</h3>
-        <ul class="categories">
+        <ul id="folio-categories">
         <?php foreach ($categories as $cat): ?>
             <?php
                 $cat_class = "";
@@ -22,8 +22,8 @@ $current_url_path .=  $language_url->prefix ?  $language_url->prefix . '/' : '';
         </ul>
     </div>
 
-    <fieldset id="edit-filters" class="form-wrapper">
-        <ul class="folioitems">
+    <fieldset id="folio-items-container" class="form-wrapper">
+        <ul id="folio-items">
         <?php for($i = 0; $i < count($iron_folio_items); $i++): ?>
             <?php
                 $item = $iron_folio_items[$i];

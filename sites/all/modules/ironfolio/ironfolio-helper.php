@@ -6,7 +6,12 @@
  */
 class IronFolioHelper {
     public function renderFolioNodeFieldImage($item) {
-        $view = field_view_field('node', $item, 'field_preview_image', array('type' => 'image', 'settings' => array('image_style' => 'medium')));
+        $view = field_view_field('node', $item, 'field_preview_image',
+            array('type' => 'image',
+                'settings' => array('image_style' => 'medium', 'image_link' => 'content'),
+                'label' => 'hidden',
+                )
+        );
         return render($view);
     }
 
