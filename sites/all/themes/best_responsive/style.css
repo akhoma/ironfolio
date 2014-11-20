@@ -1441,3 +1441,36 @@ border-left: 1px solid; border-right: 1px solid; height: 40px; margin-left: -36p
   font-size: 16px;
 }
 
+/*-------------------------------------------*
+/* Folio Complect
+/*-------------------------------------------*/
+
+body.node-type-folio-complect {
+    background: none;
+}
+
+#folio-complect-container .field-label {
+    display: none;
+}
+#folio-complect-container .field-name-field-title .field-item {
+    display: inline-block;
+    background: #57585a;
+    color: white;
+    padding: 3px 5px;
+    margin-bottom: 3px;
+}
+
+#folio-complect-container .folio-complect-swf-container object{
+    border:2px solid #ccc;
+}
+#folio-complect-container .field-collection-container, #folio-complect-container .field-collection-view {
+    border: none;
+}
+
+#folio-complect-container p {
+    display: block;
+    margin: 20px 0 0 20px;
+}
+/*-------------------------------------------*
+/* Folio Complect END
+/*-------------------------------------------*/

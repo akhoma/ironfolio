@@ -60,6 +60,12 @@ function best_responsive_preprocess_page(&$vars) {
   else {
     $vars['secondary_menu'] = FALSE;
   }
+
+  // 2kish addon
+    if (isset($vars['node']->type) && !empty($vars['node']->type)) {
+        $vars['theme_hook_suggestions'][] = 'html__' . $vars['node']->type;
+    }
+
 }
 
 /**
@@ -114,4 +120,28 @@ function best_responsive_page_alter($page) {
 if (drupal_is_front_page()) {
   drupal_add_js(drupal_get_path('theme', 'best_responsive') . '/js/flexslider-min.js');
   drupal_add_js(drupal_get_path('theme', 'best_responsive') . '/js/slide.js');
+}
+
+function renderFlashOrImage($fieldFileUri){
+    if ($fieldFileUri) {
+        $filePath = drupal_realpath($fieldFileUri);
+        $fileUrl = file_create_url($fieldFileUri);
+        $fileInfo = image_get_info($filePath);
+    } else {
+        $fileInfo = false;
+    }
+    if ($fileInfo) {
+        $width = $fileInfo['width'];
+        $height = $fileInfo['height'];
+        if ($fileInfo['mime_type'] == 'application/x-shockwave-flash') {
+            $output = "<object width='$width'
+                            height='$height'
+                            data='$fileUrl'>
+
+                        </object>";
+        } else {
+            $output = "<img src='$fileUrl' />";
+        }
+    }
+   echo $output;
 }
