@@ -8,7 +8,7 @@ jQuery(document).ready(function () {
 	IronFolio.orderForm.init();
   });', 'inline');
 
-    $formatTrqanslation = t('Fromat');
+    $formatTrqanslation = t('Format');
     $fromat = <<<EOF
     <div id="folio-formats">
         $formatTrqanslation: <a href="#">468x60</a> | <a href="#">100x100</a> | <a href="#">728x90</a> | <a href="#">600x90</a> |
@@ -39,7 +39,7 @@ EOF;
 
     $form['format'] = array(
         '#type' => 'textarea',
-        '#title' => t('Fromat'),
+        '#title' => t('Format'),
         '#required' => TRUE,
         '#suffix' => $fromat,
     );
@@ -53,7 +53,10 @@ EOF;
 }
 
 function form_frontend_ironfolio_order_validate($form, &$form_state) {
-
+    $mail = $form_state['values']['email'];
+    if (!valid_email_address($mail)) {
+        form_set_error('email', t('Please Enter a valid email address.'));
+    }
 }
 
 function ironfolio_order_mail($key, &$message, $params) {
@@ -91,7 +94,7 @@ function form_frontend_ironfolio_order_submit($form, &$form_state) {
 
     if (drupal_mail('ironfolio_order', 'some_mail_key', $to, language_default(), $params, $from, TRUE))
     {
-        drupal_set_message(t('Thanks, we will be in contact with more information soon.'));
+        drupal_set_message(t('Thanks, your data has been sent.'));
     } else {
         drupal_set_message(t('There was an error subscribing you. Please try again later'));
     }
