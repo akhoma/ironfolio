@@ -20,6 +20,16 @@ function ironfolio_menu() {
         'file' => 'ironfolio.frontend.inc',
         'type' => MENU_NORMAL_ITEM
     );
+    // frontend folio order
+    $items['ironfolio/order'] = array(
+        'title'=>'Iron Folio Order',
+        'description'=>'Frontend Iron Folio Order',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('form_frontend_ironfolio_order'),
+        'access callback' => TRUE,
+        'file' => 'ironfolio.frontend.order.inc',
+        'type' => MENU_NORMAL_ITEM
+    );
 
     return $items;
 }
